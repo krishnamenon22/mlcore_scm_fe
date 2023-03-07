@@ -2,8 +2,10 @@
 
 export default function Dashboard() {
   return (
-    <div className="flex justify-center items-center min-h-[70vh]">
-      Dashboard Test
+    <div className="">
+      <div className="min-h-[110vh]">
+        Dashboard Test
+      </div>
     </div>
   );
 }
