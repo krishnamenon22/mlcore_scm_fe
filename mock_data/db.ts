@@ -2,9 +2,15 @@
 
 /* 
 ------------------------------------------------------------------------------------------------------------------------------------
-Below DS is for inbound trips / outbound trips which will be fetched once
+Below DS is for inbound trips / outbound trips which will be fetched once, also we will fetch all stages
 ------------------------------------------------------------------------------------------------------------------------------------
 */
+
+export type StageObject = {
+  id: string;
+  name: string;
+}
+
 export type InboundObject = {
   id: string;
   trip_id: string;
@@ -15,6 +21,7 @@ export type InboundObject = {
   is_subscribed: boolean;
 }
 
+export const stages: StageObject[] = [];
 export const inboundData: InboundObject[] = [];
 
 /* 
@@ -33,26 +40,17 @@ Final data structure is `StreamingDataObject`
 */
 export type StageValue = 0 | 1 | 2 | 3;
 
-export type StageObject = {
-  id: string;
-  name: string;
-}
-
 export type TripStagesObject = {
   id: string;
   status: string;
   stage_values: Array<StageValue>;
 }
 
-export type StreamingDataObject = {
-  stages: StageObject[];
-  trips: TripStagesObject[];
+export type TripStagesDataObject = {
+  [key: string]: TripStagesObject;
 }
 
-export const streamingData: StreamingDataObject = {
-  stages: [],
-  trips: []
-};
+export const TripStagesData: TripStagesDataObject = {};
 
 /* 
 ------------------------------------------------------------------------------------------------------------------------------------
