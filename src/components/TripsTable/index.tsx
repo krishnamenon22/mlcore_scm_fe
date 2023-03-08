@@ -7,9 +7,64 @@ import moment from "moment";
 import _ from "lodash";
 import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
 import { InboundObject } from "pages/dashboard/types";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 import { TripsTableProps } from "./types";
 
 function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
+
+  const staticDataColumns: MRT_ColumnDef<InboundObject>[] = [
+    {
+      id: 'id',
+      accessorKey: 'id',
+      header: 'ID',
+      size: 40,
+    },
+    {
+      id: 'trip_id',
+      accessorKey: 'trip_id',
+      header: 'Trip ID',
+      size: 100,
+    },
+    {
+      id: 'load_id',
+      accessorKey: 'load_id',
+      header: 'Load ID',
+      size: 100,
+    },
+    {
+      id: 'source',
+      accessorKey: 'source',
+      header: 'Source',
+    },
+    {
+      id: 'destination',
+      accessorKey: 'destination',
+      header: 'Destination',
+    },
+    {
+      id: 'planned_start',
+      accessorKey: 'planned_start',
+      header: 'PD-Date',
+      size: 80,
+      Cell: ({ row }) => (
+        <div className="">
+          {moment(row.original.planned_start).format("DD MMM, YY")}
+        </div>
+      )
+    },
+    {
+      id: 'status',
+      accessorKey: undefined,
+      header: 'Status',
+      size: 80,
+      Cell: ({ row }) => (
+        <div className="">
+          {tripStages[row.original.id].status}
+        </div>
+      )
+    },
+  ];
 
   const stageColumns: MRT_ColumnDef<InboundObject>[] = _.map(stages, (stage, index) => ({
     id: stage.name,
@@ -47,63 +102,35 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         </div>
       )
     }
-  }))
+  }));
+
+  const actionColumns: MRT_ColumnDef<InboundObject>[] = [
+    {
+      id: 'subscribed',
+      accessorKey: 'is_subscribed',
+      header: 'Action',
+      size: 50,
+      Cell: ({ row }) => (
+        <div className="flex justify-center cursor-pointer items-center">
+          {
+            row.original.is_subscribed ? (
+              <StarIcon sx={{ color: "#71717a" }} />
+            ) : (
+              <StarBorderIcon sx={{ color: "#71717a" }} />
+            )
+          }
+        </div>
+      )
+    }
+  ];
 
   const columns = useMemo<MRT_ColumnDef<InboundObject>[]>(
-    () => [
-      {
-        id: 'id',
-        accessorKey: 'id',
-        header: 'ID',
-        size: 40,
-      },
-      {
-        id: 'trip_id',
-        accessorKey: 'trip_id',
-        header: 'Trip ID',
-        size: 100,
-      },
-      {
-        id: 'load_id',
-        accessorKey: 'load_id',
-        header: 'Load ID',
-        size: 100,
-      },
-      {
-        id: 'source',
-        accessorKey: 'source',
-        header: 'Source',
-      },
-      {
-        id: 'destination',
-        accessorKey: 'destination',
-        header: 'Destination',
-      },
-      {
-        id: 'planned_start',
-        accessorKey: 'planned_start',
-        header: 'PD-Date',
-        size: 80,
-        Cell: ({ row }) => (
-          <div className="">
-            {moment(row.original.planned_start).format("DD MMM, YY")}
-          </div>
-        )
-      },
-      {
-        id: 'status',
-        accessorKey: undefined,
-        header: 'Status',
-        size: 80,
-        Cell: ({ row }) => (
-          <div className="">
-            {tripStages[row.original.id].status}
-          </div>
-        )
-      },
-      ...stageColumns
-    ],
-    [stageColumns],
+    () => stageColumns.length > 0 ? [
+      ...staticDataColumns,
+      ...stageColumns,
+      ...actionColumns,
+    ] : [],
+    [staticDataColumns, stageColumns, actionColumns],
   );
 
 
