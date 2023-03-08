@@ -6,6 +6,7 @@ Below DS is for inbound trips / outbound trips which will be fetched once
 ------------------------------------------------------------------------------------------------------------------------------------
 */
 export type InboundObject = {
+  id: string;
   trip_id: string;
   load_id: string;
   source: string;
@@ -25,18 +26,22 @@ Final data structure is `StreamingDataObject`
 ------------------------------------------------------------------------------------------------------------------------------------
 */
 
+/*
+------------------------------------------------------------------------------------------------------------------------------------
+0 - Not Started, 1 - Completed, 2 - medium risk (yellow flag), 3 - high risk (red flag)
+------------------------------------------------------------------------------------------------------------------------------------
+*/
+export type StageValue = 0 | 1 | 2 | 3;
+
 export type StageObject = {
   id: string;
   name: string;
-  description: string;
 }
 
 export type TripStagesObject = {
-  trip_id: string;
+  id: string;
   status: string;
-  current_stage: string;
-  red_flag: boolean;
-  yellow_flag: boolean;
+  stage_values: Array<StageValue>;
 }
 
 export type StreamingDataObject = {
@@ -65,6 +70,7 @@ export type IndividualTripStagesObject = {
 }
 
 export type IndividualTripObject = {
+  id: string;
   trip_id: string;
   load_id: string;
   source: string;
