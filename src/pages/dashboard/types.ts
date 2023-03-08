@@ -1,44 +1,44 @@
 export type StageObject = {
-  id: string;
+  id: number;
   name: string;
 }
 
 export type InboundObject = {
-  id: string;
-  trip_id: string;
-  load_id: string;
+  id: number;
+  trip_id: number;
+  load_id: number;
   source: string;
   destination: string;
-  planned_start: Date;
+  planned_start: string;
   is_subscribed: boolean;
 }
 
 export type StageValue = 0 | 1 | 2 | 3;
 
 export type TripStagesObject = {
-  id: string;
+  id: number;
   status: string;
   stage_values: Array<StageValue>;
 }
 
 export type TripStagesDataObject = {
-  [key: string]: TripStagesObject;
+  [key: number]: TripStagesObject;
 }
 
 export type IndividualTripStagesObject = {
   stage: string;
-  date: Date;
+  date: string;
   red_flag: boolean;
   yellow_flag: boolean;
 }
 
 export type IndividualTripObject = {
-  id: string;
-  trip_id: string;
-  load_id: string;
+  id: number;
+  trip_id: number;
+  load_id: number;
   source: string;
   destination: string;
-  planned_start: Date;
+  planned_start: string;
   is_subscribed: boolean;
   stages: IndividualTripStagesObject[];
 }
