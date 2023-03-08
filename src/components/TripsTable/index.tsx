@@ -18,8 +18,8 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
     size: 80,
     muiTableBodyCellProps: {
       sx: {
-        paddingLeft: index === 0 ? "5px" : "0px",
-        paddingRight: index === stages.length - 1 ? "5px" : "0px",
+        paddingLeft: index === 0 ? "10px" : "0px",
+        paddingRight: index === stages.length - 1 ? "10px" : "0px",
         fontSize: "0.75rem",
       }
     },
@@ -32,15 +32,18 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       return (
         <div className="flex items-center w-[100%] relative">
           <div className={
-            `w-[10px] h-[10px] rounded-[50%] border border-gray-200 
-            ${value === 1 ? "bg-green-500" : value === 2 ? "bg-yellow-500" : value === 3 ? "bg-red-500" : "bg-white"}
-            absolute ${index === 0 ? "left-0" : index === stagesLen - 1 ? "left-0" : ""}`
+            `border w-[50%] ${index === 0 ? "border-transparent" : "border-gray-400"}
+            ${indexOfNS !== -1 && indexOfNS < index ? "border-dashed" : ""}`
           } />
-          {
-            index !== stagesLen - 1 && (
-              <div className={`border border-gray-500 w-full ${indexOfNS !== -1 && indexOfNS <= index ? "border-dashed" : ""}`} />
-            )
-          }
+          <div className={
+            `w-[10px] h-[10px] rounded-[50%] border border-gray-300 
+            ${value === 1 ? "bg-green-500" : value === 2 ? "bg-yellow-500" : value === 3 ? "bg-red-500" : "bg-white"}
+            `
+          } />
+          <div className={
+            `border w-[50%] ${index === stagesLen - 1 ? "border-transparent" : "border-gray-400"} 
+            ${indexOfNS !== -1 && indexOfNS <= index ? "border-dashed" : ""}`
+          } />
         </div>
       )
     }
