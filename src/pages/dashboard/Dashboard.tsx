@@ -24,7 +24,7 @@ export default function Dashboard() {
     <div className="">
       <div className="min-h-[110vh]">
         <p className='text-xl pb-3'>
-          Load Overview
+          Overview
         </p>
         <div className="flex justify-between">
           {cards.map((card) => <CardItem stageStatus={card.number} stage={card.stage} />)}

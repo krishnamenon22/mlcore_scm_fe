@@ -147,10 +147,12 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         enableGlobalFilter={false}
         enableSorting={false}
         enableColumnActions={false}
-        renderTopToolbar={() => <div className="p-2" />}
+        renderTopToolbar={() => <div className="p-1 bg-[rgba(14,14,14,0.8)]" />}
         muiTableHeadCellProps={{
           sx: () => ({
             fontSize: "13px",
+            color: "white",
+            backgroundColor: "rgba(14,14,14, 0.8)",
           })
         }}
         muiTableBodyCellProps={{

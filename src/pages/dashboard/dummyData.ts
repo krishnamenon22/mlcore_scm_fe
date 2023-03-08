@@ -3,12 +3,12 @@ import { StageObject, InboundObject, TripStagesDataObject } from "pages/dashboar
 
 export const cards =
   [
-    { number: 23, stage: "Pick Start" },
-    { number: 33, stage: "Pick End" },
-    { number: 18, stage: "Load Completed" },
-    { number: 3, stage: "Pick Tracking Depart" },
-    { number: 9, stage: "Drop Tracking Arrival" },
-    { number: 10, stage: "Unload" }
+    { number: 23, stage: "Not Started" },
+    { number: 33, stage: "Loading" },
+    { number: 18, stage: "In Yard" },
+    { number: 3, stage: "On Road" },
+    { number: 9, stage: "Arrived" },
+    { number: 10, stage: "Unloaded" }
   ];
 
 export const StagesData: StageObject[] = [
