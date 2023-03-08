@@ -1,20 +1,24 @@
+import { useEffect } from 'react';
 import CardItem from 'components/Card/CardItem'
 import TripsTable from 'components/TripsTable';
 
-import { useAppSelector } from "hooks/store-hooks";
-
-const cards =
-  [
-    { number: 23, stage: "Pick Start" },
-    { number: 33, stage: "Pick End" },
-    { number: 18, stage: "Load Completed" },
-    { number: 3, stage: "Pick Tracking Depart" },
-    { number: 9, stage: "Drop Tracking Arrival" },
-    { number: 10, stage: "Unload" }
-  ];
+import { useAppSelector, useAppDispatch } from "hooks/store-hooks";
+import { setStagesInbound, setTripsInbound, setTripStagesInbound } from 'store/slice/inboundSlice';
+import { cards, StagesData, InboundData, TripStagesData } from './dummyData';
 
 export default function Dashboard() {
+  const dispatch = useAppDispatch();
   const { stages, trips, tripStages, } = useAppSelector((state) => state.inbound);
+
+  const setDummyData = () => {
+    dispatch(setStagesInbound(StagesData));
+    dispatch(setTripsInbound(InboundData));
+    dispatch(setTripStagesInbound(TripStagesData));
+  }
+
+  useEffect(() => {
+    setDummyData();
+  }, []);
 
   return (
     <div className="">

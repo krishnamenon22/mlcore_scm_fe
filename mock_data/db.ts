@@ -41,7 +41,6 @@ Final data structure is `StreamingDataObject`
 export type StageValue = 0 | 1 | 2 | 3;
 
 export type TripStagesObject = {
-  id: number;
   status: string;
   stage_values: Array<StageValue>;
 }
