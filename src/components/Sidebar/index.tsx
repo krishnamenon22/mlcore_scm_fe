@@ -9,7 +9,7 @@ function Sidebar({ menuItems, initialOpenState }: SidebarProps) {
   return (
 
     <div
-      className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"
+      className={`bg-themeBlue2 min-h-screen ${open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
     >
       <div className="py-3 flex justify-end">

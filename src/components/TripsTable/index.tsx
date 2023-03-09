@@ -117,9 +117,9 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         <div className="flex justify-center cursor-pointer items-center">
           {
             row.original.is_subscribed ? (
-              <StarIcon sx={{ color: "#71717a" }} />
+              <StarIcon sx={{ color: "#003668" }} />
             ) : (
-              <StarBorderIcon sx={{ color: "#71717a" }} />
+              <StarBorderIcon sx={{ color: "#003668" }} />
             )
           }
         </div>
@@ -149,12 +149,12 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         enableGlobalFilter={false}
         enableSorting={false}
         enableColumnActions={false}
-        renderTopToolbar={() => <div className="p-1 bg-[rgba(14,14,14,0.8)]" />}
+        renderTopToolbar={() => <div className="p-1 bg-[#D8E6F3]" />}
         muiTableHeadCellProps={{
           sx: () => ({
             fontSize: "13px",
-            color: "white",
-            backgroundColor: "rgba(14,14,14, 0.8)",
+            color: "black",
+            backgroundColor: "#D8E6F3",
           })
         }}
         muiTableBodyCellProps={{

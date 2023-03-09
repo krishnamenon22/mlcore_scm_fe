@@ -5,7 +5,10 @@ module.exports = {
     extend: {
       colors: {
         // You can add your custom colors here
-        marsBlue: '#0010A0',
+        themeBlue1: '#0071DC',
+        themeBlue2: '#004F9A',
+        themeBlue3: '#003668',
+        themeBlack: '#0e0e0e',
         layoutGray: '#F5F7FB',
       },
       fontFamily: {},
