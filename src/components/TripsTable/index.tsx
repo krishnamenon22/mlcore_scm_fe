@@ -58,11 +58,14 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       accessorKey: undefined,
       header: 'Status',
       size: 80,
-      Cell: ({ row }) => (
-        <div className="">
-          {tripStages[row.original.id]?.status}
-        </div>
-      )
+      Cell: ({ row }) => {
+        const status = tripStages[row.original.id]?.status;
+        return (
+          <div className={`text-center ${status === "Delayed" ? "bg-red-300" : ""}`}>
+            {status}
+          </div>
+        )
+      }
     },
   ];
 

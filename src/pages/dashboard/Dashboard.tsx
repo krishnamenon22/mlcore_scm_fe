@@ -6,7 +6,6 @@ import { useAppSelector, useAppDispatch } from "hooks/store-hooks";
 import { setStagesInbound, setTripsInbound, setTripStagesInbound } from 'store/slice/inboundSlice';
 import { ENDPOINTS } from 'constants/constant';
 import { AxiosResponse } from 'axios';
-import socketIOClient from "socket.io-client";
 import { StagesAPIResponseType, InboundDataAPIResponseType, TripStagesInboundAPIResponseType, CardsAPIResponseType, CardObject } from './types';
 
 
@@ -44,13 +43,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     setDummyData();
-  }, []);
-
-  useEffect(() => {
-    const socket = socketIOClient("http://localhost:8080/");
-    socket.on("UpdatedTripIds", data => {
-      console.log(data);
-    });
   }, []);
 
   return (
