@@ -1,6 +1,7 @@
 import { combineReducers, configureStore, Middleware } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import themeReducer from "./slice/themeSlice";
+import inboundReducer from "./slice/inboundSlice";
 
 const development: boolean = process.env.NODE_ENV === "development";
 const middleware: Middleware[] = [];
@@ -14,6 +15,7 @@ if (development) {
 
 const reducer = combineReducers({
   theme: themeReducer,
+  inbound: inboundReducer,
 });
 
 const store = configureStore({

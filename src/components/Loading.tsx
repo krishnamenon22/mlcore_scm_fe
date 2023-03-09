@@ -12,12 +12,12 @@ function Loading() {
       style={{ minHeight: "85vh" }}
     >
       <Grid xs={12} sm={12} md={12} lg={12} item>
-        <Box
+        {/* <Box
           className="w-24 animate-bounce"
           component="img"
           // src={Logo}
           alt="Logo"
-        />
+        /> */}
       </Grid>
       <Grid xs={12} sm={12} md={12} lg={12} item>
         <LinearProgress className="w-60" />
