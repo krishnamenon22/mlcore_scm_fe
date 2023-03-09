@@ -60,7 +60,7 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       size: 80,
       Cell: ({ row }) => (
         <div className="">
-          {tripStages[row.original.id].status}
+          {tripStages[row.original.id]?.status}
         </div>
       )
     },
@@ -80,9 +80,9 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
     },
     Cell: ({ row }) => {
       const tripStage = tripStages[row.original.id];
-      const value = tripStage.stage_values[index];
-      const indexOfNS = tripStage.stage_values.indexOf(0);
-      const stagesLen = tripStage.stage_values.length;
+      const value = tripStage?.stage_values[index];
+      const indexOfNS = tripStage?.stage_values.indexOf(0);
+      const stagesLen = tripStage?.stage_values.length;
 
       return (
         <div className="flex items-center w-[100%] relative">
@@ -132,7 +132,6 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
     ] : [],
     [staticDataColumns, stageColumns, actionColumns],
   );
-
 
   return (
     <div>

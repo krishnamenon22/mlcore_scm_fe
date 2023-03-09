@@ -1,3 +1,8 @@
+export type CardObject = {
+  number: number;
+  stage: string;
+}
+
 export type StageObject = {
   id: number;
   name: string;
@@ -40,4 +45,20 @@ export type IndividualTripObject = {
   planned_start: string;
   is_subscribed: boolean;
   stages: IndividualTripStagesObject[];
+}
+
+export type CardsAPIResponseType = {
+  data: CardObject[];
+}
+
+export type StagesAPIResponseType = {
+  data: StageObject[];
+}
+
+export type InboundDataAPIResponseType = {
+  data: InboundObject[];
+}
+
+export type TripStagesInboundAPIResponseType = {
+  data: TripStagesDataObject;
 }
