@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from "hooks/store-hooks";
 import { setStagesInbound, setTripsInbound, setTripStagesInbound } from 'store/slice/inboundSlice';
 import { ENDPOINTS } from 'constants/constant';
 import { AxiosResponse } from 'axios';
-// import { cards, StagesData, InboundData, TripStagesData } from './dummyData';
+import socketIOClient from "socket.io-client";
 import { StagesAPIResponseType, InboundDataAPIResponseType, TripStagesInboundAPIResponseType, CardsAPIResponseType, CardObject } from './types';
 
 
@@ -46,6 +46,13 @@ export default function Dashboard() {
     setDummyData();
   }, []);
 
+  useEffect(() => {
+    const socket = socketIOClient("http://localhost:8080/");
+    socket.on("UpdatedTripIds", data => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <div className="">
       <div className="min-h-[110vh]">
@@ -53,7 +60,7 @@ export default function Dashboard() {
           Overview
         </p>
         <div className="flex justify-between">
-          {cards.map((card) => <CardItem number={card.number} stage={card.stage} />)}
+          {cards.map((card) => <CardItem key={card.stage} number={card.number} stage={card.stage} />)}
         </div>
         <div className="pt-5 pb-4">
           <TripsTable stages={stages} trips={trips} tripStages={tripStages} />
