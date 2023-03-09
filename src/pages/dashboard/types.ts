@@ -30,7 +30,6 @@ export type TripStagesDataObject = {
 }
 
 export type IndividualTripStagesObject = {
-  stage: string;
   date: string;
   red_flag: boolean;
   yellow_flag: boolean;
@@ -38,12 +37,6 @@ export type IndividualTripStagesObject = {
 
 export type IndividualTripObject = {
   id: number;
-  trip_id: number;
-  load_id: number;
-  source: string;
-  destination: string;
-  planned_start: string;
-  is_subscribed: boolean;
   stages: IndividualTripStagesObject[];
 }
 
