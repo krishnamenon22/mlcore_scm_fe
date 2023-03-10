@@ -125,9 +125,9 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         <div className="flex justify-center cursor-pointer items-center">
           {
             row.original.is_subscribed ? (
-              <StarIcon sx={{ color: "#003668" }} />
+              <StarIcon sx={{ color: "#003668", fontSize: "1rem" }} />
             ) : (
-              <StarBorderIcon sx={{ color: "#003668" }} />
+              <StarBorderIcon sx={{ color: "#003668", fontSize: "1rem" }} />
             )
           }
         </div>
@@ -159,8 +159,7 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         enableColumnActions={false}
         enableColumnFilters={false}
         positionGlobalFilter="right"
-        // enableGlobalFilter={false}
-        // enableSorting={false}
+        enableSorting={false}
         // renderTopToolbar={() => <div className="p-1 bg-[#D8E6F3]" />}
         enablePagination={false}
         enableRowVirtualization
