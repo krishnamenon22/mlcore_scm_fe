@@ -4,8 +4,8 @@ import { CardProfileObject } from 'pages/dashboard/userprofile/types';
 
 function CardProfile({ username, userid, gender, dob, location, language, phone, email }: CardProfileObject) {
     return (
-        <div className="w-full h-full rounded overflow-hidden shadow-lg bg-white" >
-            <div className="my-2 mx-2 flex justify-between">
+        <div className="w-full h-full p-2 px-4 rounded overflow-hidden shadow-lg bg-white" >
+            <div className="my-2 mx-2  flex justify-between">
                 <div><span className='text-lg pb-3 font-bold'>User Profile</span><EditOutlinedIcon color='primary' sx={{ width: 15, height: 15, marginLeft: 2 }} /><span className='text-xs pb-2 text-blue-600 underline'>Edit</span></div>
                 <div className='flex justify-center'><SettingsOutlinedIcon fontSize='medium' sx={{ paddingTop: 0.2, color: '#1e40af' }} /><span className='text-base pb-3 text-blue-800 flex justify-center'>Settings</span></div>
             </div>

@@ -31,8 +31,8 @@ export default function Userprofile() {
                     Overview
                 </p>
                 <div className="min-h-[20vh] flex justify-between">
-                    <div className="min-w-[12vw] "> <CardProfileImage username={cardProfile[0].username} />  </div>
-                    <div className="mx-4 "> <CardProfile key={cardProfile[0].userid} username={cardProfile[0].username} userid={cardProfile[0].userid} gender={cardProfile[0].gender} dob={cardProfile[0].dob} location={cardProfile[0].location} language={cardProfile[0].language} phone={cardProfile[0].phone} email={cardProfile[0].email} />  </div>
+                    <div className="min-w-[12vw] "> <CardProfileImage username={cardProfile[0]?.username} />  </div>
+                    <div className="mx-4 "> <CardProfile key={cardProfile[0]?.userid} username={cardProfile[0]?.username} userid={cardProfile[0]?.userid} gender={cardProfile[0]?.gender} dob={cardProfile[0]?.dob} location={cardProfile[0]?.location} language={cardProfile[0]?.language} phone={cardProfile[0]?.phone} email={cardProfile[0]?.email} />  </div>
                 </div>
                 <p className='mx-1 my-4 text-lg pb-3 font-bold'>
                     Mail

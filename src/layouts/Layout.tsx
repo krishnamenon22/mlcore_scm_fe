@@ -16,7 +16,7 @@ function Layout() {
 
   const menus: MenuItemType[] = [
     { name: "Dashboard", link: "/", icon: MdOutlineDashboard, margin: false },
-    { name: "User Management", link: "/", icon: AiOutlineUser, margin: false },
+    { name: "User Profile", link: "/userprofile", icon: AiOutlineUser, margin: false },
     { name: "Setting", link: "/", icon: RiSettings4Line, margin: false },
   ];
 
