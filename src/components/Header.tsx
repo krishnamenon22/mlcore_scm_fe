@@ -7,7 +7,7 @@ function Header() {
   return (
     <div className="bg-white px-4 py-3 flex items-center w-full">
       <div className="flex items-center w-[50%]">
-        <div className="text-3xl text-themeBlue3">SENSE</div>
+        <div className="text-3xl text-themeBlue3 tracking-widest">SENSE</div>
       </div>
       <div className="flex items-center w-[50%] justify-end px-3 pr-5">
         <div className="float-right flex gap-4">

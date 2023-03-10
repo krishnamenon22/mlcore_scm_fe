@@ -18,45 +18,55 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
   const [sliderItemId, setSliderItemId] = useState<number>(0);
 
   const staticDataColumns: MRT_ColumnDef<InboundObject>[] = [
-    {
-      id: 'id',
-      accessorKey: 'id',
-      header: 'ID',
-      size: 40,
-      enableColumnFilter: false,
-    },
+    // {
+    //   id: 'id',
+    //   accessorKey: 'id',
+    //   header: 'ID',
+    //   size: 40,
+    //   enableColumnFilter: false,
+    // },
     {
       id: 'trip_id',
       accessorKey: 'trip_id',
       header: 'Trip ID',
-      size: 100,
+      size: 70,
+      enableColumnFilter: false,
     },
     {
       id: 'load_id',
       accessorKey: 'load_id',
       header: 'Load ID',
-      size: 100,
+      size: 70,
+      enableColumnFilter: false,
     },
     {
       id: 'source',
       accessorKey: 'source',
       header: 'Source',
       enableSorting: false,
+      muiTableHeadCellFilterTextFieldProps: { placeholder: 'Source' },
+      // filterVariant: "multi-select",
+      // filterSelectOptions: [
+      //   { text: 'Delayed', value: 'Delayed' },
+      //   { text: 'On Time', value: 'On Time' },
+      // ],
     },
     {
       id: 'destination',
       accessorKey: 'destination',
       header: 'Destination',
       enableSorting: false,
+      muiTableHeadCellFilterTextFieldProps: { placeholder: 'Destination' },
     },
     {
       id: 'planned_start',
       accessorKey: 'planned_start',
       header: 'PD-Date',
-      size: 80,
+      size: 120,
+      muiTableHeadCellFilterTextFieldProps: { placeholder: 'Date' },
       Cell: ({ row }) => (
         <div className="">
-          {moment(row.original.planned_start).format("DD MMM, YY")}
+          {moment(row.original.planned_start).format("DD MMM, YY - hh:mm A")}
         </div>
       )
     },
@@ -122,12 +132,13 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       id: 'subscribed',
       accessorKey: 'is_subscribed',
       header: 'Action',
-      size: 50,
+      size: 60,
       enableSorting: false,
       enableGlobalFilter: false,
+      enableColumnFilter: false,
       Cell: ({ row }) => (
         <div className="flex justify-center cursor-pointer items-center">
-          <div className="pr-2">
+          <div className="pr-3">
             {
               row.original.is_subscribed ? (
                 <StarIcon sx={{ color: "#003668", fontSize: "1rem" }} />
@@ -191,7 +202,7 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
           sx: () => ({
             fontSize: "13px",
             color: "black",
-            backgroundColor: "#D8E6F3",
+            // backgroundColor: "#D8E6F3",
           })
         }}
         muiTableBodyCellProps={{
@@ -202,6 +213,10 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
         muiSearchTextFieldProps={{
           placeholder: 'Search all data',
           sx: { minWidth: '300px', borderColor: "#003668" },
+          variant: 'outlined',
+        }}
+        muiTableHeadCellFilterTextFieldProps={{
+          sx: { width: '100%', backgroundColor: "white", },
           variant: 'outlined',
         }}
       />
