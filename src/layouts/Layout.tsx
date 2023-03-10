@@ -28,7 +28,7 @@ function Layout() {
           <Sidebar menuItems={menus} initialOpenState={false} />
           <div className="w-[100%] h-[100vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-white">
             <Header />
-            <div className="px-6 py-3 w-[100%] bg-gray-100">
+            <div className="pl-4 pr-5 py-3 w-[100%] bg-gray-100">
               <Outlet />
             </div>
           </div>

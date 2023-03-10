@@ -19,6 +19,7 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       accessorKey: 'id',
       header: 'ID',
       size: 40,
+      enableColumnFilter: false,
     },
     {
       id: 'trip_id',
@@ -36,11 +37,13 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       id: 'source',
       accessorKey: 'source',
       header: 'Source',
+      enableSorting: false,
     },
     {
       id: 'destination',
       accessorKey: 'destination',
       header: 'Destination',
+      enableSorting: false,
     },
     {
       id: 'planned_start',
@@ -58,10 +61,11 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       accessorKey: undefined,
       header: 'Status',
       size: 80,
+      enableSorting: false,
       Cell: ({ row }) => {
         const status = tripStages[row.original.id]?.status;
         return (
-          <div className={`text-center ${status === "Delayed" ? "bg-red-300" : ""}`}>
+          <div className={`text-center p-[3px] ${status === "Delayed" ? "bg-red-300" : ""}`}>
             {status}
           </div>
         )
@@ -74,6 +78,8 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
     accessorKey: undefined,
     header: stage.name,
     size: 80,
+    enableSorting: false,
+    enableGlobalFilter: false,
     muiTableBodyCellProps: {
       sx: {
         paddingLeft: index === 0 ? "10px" : "0px",
@@ -113,13 +119,15 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       accessorKey: 'is_subscribed',
       header: 'Action',
       size: 50,
+      enableSorting: false,
+      enableGlobalFilter: false,
       Cell: ({ row }) => (
         <div className="flex justify-center cursor-pointer items-center">
           {
             row.original.is_subscribed ? (
-              <StarIcon sx={{ color: "#003668" }} />
+              <StarIcon sx={{ color: "#003668", fontSize: "1rem" }} />
             ) : (
-              <StarBorderIcon sx={{ color: "#003668" }} />
+              <StarBorderIcon sx={{ color: "#003668", fontSize: "1rem" }} />
             )
           }
         </div>
@@ -136,20 +144,30 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
     [staticDataColumns, stageColumns, actionColumns],
   );
 
+  const partitions = _.partition(trips, (trip) => tripStages[trip.id]?.status === "Delayed");
+  const pinnedSortedTrips = [...partitions[0], ...partitions[1]];
+
+
   return (
     <div>
       <MaterialReactTable
         columns={columns}
-        data={trips}
-        initialState={{ density: 'compact' }}
-        enableColumnFilters={false}
+        data={pinnedSortedTrips}
         enableDensityToggle={false}
         enableFullScreenToggle={false}
         enableHiding={false}
-        enableGlobalFilter={false}
-        enableSorting={false}
         enableColumnActions={false}
-        renderTopToolbar={() => <div className="p-1 bg-[#D8E6F3]" />}
+        enableColumnFilters={false}
+        positionGlobalFilter="right"
+        enableSorting={false}
+        // renderTopToolbar={() => <div className="p-1 bg-[#D8E6F3]" />}
+        enablePagination={false}
+        enableRowVirtualization
+        enableBottomToolbar={false}
+        initialState={{
+          density: 'compact',
+          showGlobalFilter: true,
+        }}
         muiTableHeadCellProps={{
           sx: () => ({
             fontSize: "13px",
@@ -161,6 +179,11 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
           sx: () => ({
             fontSize: "0.75rem",
           })
+        }}
+        muiSearchTextFieldProps={{
+          placeholder: 'Search all data',
+          sx: { minWidth: '300px', borderColor: "#003668" },
+          variant: 'outlined',
         }}
       />
     </div>

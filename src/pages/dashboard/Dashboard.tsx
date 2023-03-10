@@ -6,6 +6,7 @@ import { useAppSelector, useAppDispatch } from "hooks/store-hooks";
 import { setStagesInbound, setTripsInbound, setTripStagesInbound } from 'store/slice/inboundSlice';
 import { ENDPOINTS } from 'constants/constant';
 import { AxiosResponse } from 'axios';
+// import SlideOver from 'components/SlideOver';
 import { StagesAPIResponseType, InboundDataAPIResponseType, TripStagesInboundAPIResponseType, CardsAPIResponseType, CardObject } from './types';
 
 
