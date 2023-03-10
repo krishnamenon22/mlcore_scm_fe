@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import StarIcon from '@mui/icons-material/Star'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import HelpIcon from '@mui/icons-material/Help'
-import SlideOver from './SlideOver'
 import SubscribedTrips from './SubscribedTrips'
 
 function Header() {
@@ -16,11 +15,7 @@ function Header() {
     <div className='float-right flex gap-4'>
      <div className='cursor-pointer'>
       <StarIcon sx={{ color: '#003668' }} onClick={() => setShowSlider(true)} />
-      {showSlider && (
-       <SlideOver closeOnClick={() => setShowSlider(false)}>
-        <SubscribedTrips />
-       </SlideOver>
-      )}
+      {showSlider && <SubscribedTrips setShowSlider={setShowSlider} />}
      </div>
      <div className='cursor-pointer'>
       <NotificationsIcon sx={{ color: '#003668' }} />

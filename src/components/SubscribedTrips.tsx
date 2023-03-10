@@ -1,7 +1,11 @@
-import React from 'react'
 import StarIcon from '@mui/icons-material/Star'
+import SlideOver from './SlideOver'
 
-function SubscribedTrips() {
+type SubscribedTripsProp = {
+ setShowSlider: (flag: boolean) => void
+}
+
+function SubscribedTrips({ setShowSlider }: SubscribedTripsProp) {
  const subscribedTrips = [
   {
    id: 2,
@@ -32,7 +36,7 @@ function SubscribedTrips() {
   },
  ]
 
- return (
+ const component = (
   <div>
    <h1 className='text-indigo-900 mb-4 font-semibold'>Subscribed Trips</h1>
    {subscribedTrips.map((trips) => {
@@ -53,6 +57,10 @@ function SubscribedTrips() {
     )
    })}
   </div>
+ )
+
+ return (
+  <SlideOver closeOnClick={() => setShowSlider(false)}>{component}</SlideOver>
  )
 }
 
