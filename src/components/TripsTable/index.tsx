@@ -2,16 +2,20 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import moment from "moment";
 import _ from "lodash";
 import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
 import { InboundObject } from "pages/dashboard/types";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { TripsTableProps } from "./types";
+import TripTimelineSlider from "./TripTimelineSlider";
 
 function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
+  const [showSlider, setShowSlider] = useState<boolean>(false);
+  const [sliderItemId, setSliderItemId] = useState<number>(0);
 
   const staticDataColumns: MRT_ColumnDef<InboundObject>[] = [
     {
@@ -60,7 +64,7 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       id: 'status',
       accessorKey: undefined,
       header: 'Status',
-      size: 80,
+      size: 60,
       enableSorting: false,
       Cell: ({ row }) => {
         const status = tripStages[row.original.id]?.status;
@@ -123,13 +127,21 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
       enableGlobalFilter: false,
       Cell: ({ row }) => (
         <div className="flex justify-center cursor-pointer items-center">
-          {
-            row.original.is_subscribed ? (
-              <StarIcon sx={{ color: "#003668", fontSize: "1rem" }} />
-            ) : (
-              <StarBorderIcon sx={{ color: "#003668", fontSize: "1rem" }} />
-            )
-          }
+          <div className="pr-2">
+            {
+              row.original.is_subscribed ? (
+                <StarIcon sx={{ color: "#003668", fontSize: "1rem" }} />
+              ) : (
+                <StarBorderIcon sx={{ color: "#003668", fontSize: "1rem" }} />
+              )
+            }
+          </div>
+          <div onClick={() => {
+            setShowSlider(true);
+            setSliderItemId(row.original.id);
+          }}>
+            <VisibilityIcon sx={{ color: "#003668", fontSize: "1rem" }} />
+          </div>
         </div>
       )
     }
@@ -150,6 +162,13 @@ function TripsTable({ stages, trips, tripStages }: TripsTableProps) {
 
   return (
     <div>
+      {
+        showSlider && (
+          <TripTimelineSlider stages={stages}
+            sliderItemId={sliderItemId} setShowSlider={setShowSlider}
+            tripStatus={tripStages[sliderItemId].status} />
+        )
+      }
       <MaterialReactTable
         columns={columns}
         data={pinnedSortedTrips}
