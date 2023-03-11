@@ -19,13 +19,13 @@ function Sidebar({ menuItems, initialOpenState }: SidebarProps) {
           onClick={() => setOpen(!open)}
         />
       </div>
-      <div className="mt-4 flex flex-col gap-4 relative">
+      <div className="mt-4 flex flex-col gap-4 relative h-[90vh]">
         {menuItems?.map((menu, i) => (
           <Link
             to={menu?.link}
             key={`${menu?.name}-${i + 1}`}
             className={` ${menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+              } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md ${menu?.isBottom ? "mt-[auto]" : ""}`}
           >
             <div>{React.createElement(menu?.icon, { size: "20" })}</div>
             <h2
@@ -37,12 +37,17 @@ function Sidebar({ menuItems, initialOpenState }: SidebarProps) {
             >
               {menu?.name}
             </h2>
-            <h2
-              className={`${open && "hidden"
-                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
-            >
-              {menu?.name}
-            </h2>
+            {
+              !menu?.isBottom && (
+                <h2
+                  className={`${open && "hidden"
+                    } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+                >
+                  {menu?.name}
+                </h2>
+              )
+            }
+
           </Link>
         ))}
       </div>

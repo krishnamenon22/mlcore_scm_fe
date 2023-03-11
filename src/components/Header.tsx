@@ -5,27 +5,27 @@ import HelpIcon from '@mui/icons-material/Help'
 import SubscribedTrips from './SubscribedTrips'
 
 function Header() {
- const [showSlider, setShowSlider] = useState<boolean>(false)
- return (
-  <div className='bg-white px-4 py-3 flex items-center w-full'>
-   <div className='flex items-center w-[50%]'>
-    <div className='text-3xl text-themeBlue3'>SENSE</div>
-   </div>
-   <div className='flex items-center w-[50%] justify-end px-3 pr-5'>
-    <div className='float-right flex gap-4'>
-     <div className='cursor-pointer'>
-      <StarIcon sx={{ color: '#003668' }} onClick={() => setShowSlider(true)} />
-      {showSlider && <SubscribedTrips setShowSlider={setShowSlider} />}
-     </div>
-     <div className='cursor-pointer'>
-      <NotificationsIcon sx={{ color: '#003668' }} />
-     </div>
-     <div className='cursor-pointer'>
-      <HelpIcon sx={{ color: '#003668' }} />
-     </div>
+  const [showSlider, setShowSlider] = useState<boolean>(false)
+  return (
+    <div className="bg-white px-4 py-3 flex items-center w-full">
+      <div className="flex items-center w-[50%]">
+        <div className="text-3xl text-themeBlue3 tracking-widest">SENSE</div>
+      </div>
+      <div className="flex items-center w-[50%] justify-end px-3 pr-5">
+        <div className="float-right flex gap-4">
+          <div className="cursor-pointer">
+            <StarIcon sx={{ color: "#003668" }} onClick={() => setShowSlider(true)}/>
+            {showSlider && <SubscribedTrips setShowSlider={setShowSlider} />}
+          </div>
+          <div className="cursor-pointer">
+            <NotificationsIcon sx={{ color: "#003668" }} />
+          </div>
+          <div className="cursor-pointer">
+            <HelpIcon sx={{ color: "#003668" }} />
+          </div>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
  )
 }
 

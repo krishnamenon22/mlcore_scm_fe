@@ -55,3 +55,7 @@ export type InboundDataAPIResponseType = {
 export type TripStagesInboundAPIResponseType = {
   data: TripStagesDataObject;
 }
+
+export type IndividualTripObjectAPIResponseType = {
+  data: IndividualTripObject;
+}
