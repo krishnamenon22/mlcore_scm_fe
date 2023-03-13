@@ -11,6 +11,7 @@ import {
 } from 'store/slice/inboundSlice'
 import { ENDPOINTS } from 'constants/constant'
 import { AxiosResponse } from 'axios'
+import Alerts from './Alerts'
 
 import {
  StagesAPIResponseType,
@@ -63,7 +64,7 @@ export default function Dashboard() {
  useEffect(() => {
   setDummyData()
  }, [])
-
+   
  return (
   <div className=''>
    <div className='min-h-[110vh]'>
@@ -73,12 +74,7 @@ export default function Dashboard() {
       <CardItem key={card.stage} number={card.number} stage={card.stage} />
      ))}
     </div>
-    <span
-     className='text-sky-700 text-sm underline cursor-pointer'
-     onClick={() => setShowSlider(true)}
-    >
-     Take Actions
-    </span>
+    <Alerts setShowSlider={setShowSlider} tripStages={tripStages}/>
     {showSlider && <TakeActions setShowSlider={setShowSlider} />}
     <div className='pt-5 pb-4'>
      <TripsTable stages={stages} trips={trips} tripStages={tripStages} />
