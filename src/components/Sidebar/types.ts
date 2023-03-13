@@ -3,6 +3,7 @@ export type MenuItemType = {
   link: string;
   icon: any;
   margin: boolean;
+  isBottom: boolean;
 };
 
 export type SidebarProps = {
