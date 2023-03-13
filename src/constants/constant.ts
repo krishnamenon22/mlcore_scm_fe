@@ -18,7 +18,7 @@ export const USERDETAILS = [{
   location: 'California,US',
   language: 'English',
   phone: '232 908 1234',
-  email: 'johnmathew@pepsico.com'
+  email: 'johnmathew@tigeranalytics.com'
 }];
 
 
