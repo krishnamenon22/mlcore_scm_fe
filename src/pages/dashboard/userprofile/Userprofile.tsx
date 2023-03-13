@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import CardItem from 'components/Card/CardItem'
 import CardProfileImage from "components/Card/CardProfileImage";
+import TripsTable from 'components/TripsTable'
 import CardProfile from "components/Card/CardProfile";
 import { AxiosResponse } from 'axios';
+import { useAppSelector, useAppDispatch } from 'hooks/store-hooks'
 import client from 'client';
 import { ENDPOINTS, USERDETAILS } from 'constants/constant';
 import { CardsAPIResponseType, CardObject, CardProfileObject } from './types';
@@ -11,7 +13,7 @@ import { CardsAPIResponseType, CardObject, CardProfileObject } from './types';
 export default function Userprofile() {
     const [cards, setCards] = useState<CardObject[]>([]);
     const [cardProfile, setCardProfile] = useState<CardProfileObject[]>([]);
-
+    const { stages, trips, tripStages } = useAppSelector((state) => state.inbound)
     const fetchInboundCards = async () => {
         const response: AxiosResponse<CardsAPIResponseType> = await client.get(`${ENDPOINTS.inboundCards}`);
         setCards(response.data.data)
@@ -37,6 +39,9 @@ export default function Userprofile() {
                 </p>
                 <div className="flex justify-between">
                     {cards.map((card) => <CardItem key={card.stage} number={card.number} stage={card.stage} />)}
+                </div>
+                <div className='pt-5 pb-4'>
+                    <TripsTable stages={stages} trips={trips.filter(item => item.is_subscribed)} tripStages={tripStages} />
                 </div>
             </div>
         </div>
