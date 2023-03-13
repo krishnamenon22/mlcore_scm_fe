@@ -1,9 +1,11 @@
-import React from "react";
-import StarIcon from '@mui/icons-material/Star';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import HelpIcon from '@mui/icons-material/Help';
+import React, { useState } from 'react'
+import StarIcon from '@mui/icons-material/Star'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import HelpIcon from '@mui/icons-material/Help'
+import SubscribedTrips from './SubscribedTrips'
 
 function Header() {
+  const [showSlider, setShowSlider] = useState<boolean>(false)
   return (
     <div className="bg-white px-4 py-3 flex items-center w-full">
       <div className="flex items-center w-[50%]">
@@ -12,7 +14,8 @@ function Header() {
       <div className="flex items-center w-[50%] justify-end px-3 pr-5">
         <div className="float-right flex gap-4">
           <div className="cursor-pointer">
-            <StarIcon sx={{ color: "#003668" }} />
+            <StarIcon sx={{ color: "#003668" }} onClick={() => setShowSlider(true)}/>
+            {showSlider && <SubscribedTrips setShowSlider={setShowSlider} />}
           </div>
           <div className="cursor-pointer">
             <NotificationsIcon sx={{ color: "#003668" }} />
@@ -23,7 +26,7 @@ function Header() {
         </div>
       </div>
     </div>
-  )
-};
+ )
+}
 
-export default Header;
+export default Header
