@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import SlideOver from "./SlideOver";
 
 function Notification() {
 
