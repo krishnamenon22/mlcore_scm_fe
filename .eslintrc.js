@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: ["react", "security", "@typescript-eslint", "cypress"],
   rules: {
-    camelcase: ["error", { ignoreDestructuring: true }],
+    // camelcase: ["error", { ignoreDestructuring: true }],
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
