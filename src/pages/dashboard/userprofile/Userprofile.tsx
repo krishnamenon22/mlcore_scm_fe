@@ -18,12 +18,10 @@ export default function Userprofile() {
     };
 
     useEffect(() => {
-        console.log("user details", USERDETAILS)
         fetchInboundCards();
         setCardProfile(USERDETAILS)
-
     }, []);
-    console.log("card profile", cardProfile[0])
+
     return (
         <div className="">
             <div className="min-h-[88vh]">
