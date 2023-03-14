@@ -18,6 +18,22 @@ export type CardProfileObject = {
     email: string;
 }
 
+export type NotificationObject = {
+    critical: number;
+    tripid: number;
+    source: string;
+    trailerid: number;
+    sourceid: number;
+}
+
+export type NotificationAPIResponseType = {
+    data: NotificationObject[];
+}
+
+export type UserProfileAPIResponseType = {
+    data: CardProfileObject[];
+}
+
 export type CardProfileImageObject = {
     username: string;
 }

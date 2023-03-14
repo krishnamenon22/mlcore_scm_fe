@@ -8,6 +8,8 @@ export const ENDPOINTS = {
   inboundTrips: 'inbound_trips',
   inboundTripStages: 'inbound_trip_stages',
   individualTrip: 'single_inbound_trip',
+  userProfile: 'userprofile_data',
+  notification: 'notification_data'
 };
 
 export const USERDETAILS = [{

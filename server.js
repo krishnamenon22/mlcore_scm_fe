@@ -67,6 +67,13 @@ app.get("/api/inbound_trip_stages", (req, res) => {
   res.status(200).json(db.inbound_trip_stages_data);
 });
 
+app.get("/api/userprofile_data", (req, res) => {
+  res.status(200).json(db.userprofile_data);
+});
+app.get("/api/notification_data", (req, res) => {
+  res.status(200).json(db.notification_data);
+});
+
 app.get("/api/single_inbound_trip", (req, res) => {
   const { id } = req.query;
   const filteredObject = db.individual_trip_objects.data.filter((trip) => trip.id.toString() === id.toString())[0];
