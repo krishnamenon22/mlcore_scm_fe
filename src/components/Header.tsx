@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import StarIcon from '@mui/icons-material/Star'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import HelpIcon from '@mui/icons-material/Help'
+import { useAppSelector } from 'hooks/store-hooks'
 import SubscribedTrips from './SubscribedTrips'
 import SlideOver from "./SlideOver";
 import Notification from "./Notification";
@@ -9,6 +10,7 @@ import Notification from "./Notification";
 function Header() {
   const [showSlider, setShowSlider] = useState<boolean>(false)
   const [notificationSlider, setNotificationSlider] = useState<boolean>(false)
+  const {trips, tripStages} = useAppSelector((state)=> state.inbound);
   return (
     <div className="bg-white px-4 py-3 flex items-center w-full">
       <div className="flex items-center w-[50%]">
@@ -18,7 +20,7 @@ function Header() {
         <div className="float-right flex gap-4">
           <div className="cursor-pointer">
             <StarIcon sx={{ color: "#003668" }} onClick={() => setShowSlider(true)} />
-            {showSlider && <SubscribedTrips setShowSlider={setShowSlider} />}
+            {showSlider && <SubscribedTrips setShowSlider={setShowSlider} trips={trips} tripStages={tripStages}/>}
           </div>
           <div className="cursor-pointer">
             <NotificationsIcon sx={{ color: "#003668" }} onClick={() => setNotificationSlider(true)} />

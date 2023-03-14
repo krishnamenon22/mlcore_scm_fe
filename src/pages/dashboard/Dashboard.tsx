@@ -75,7 +75,7 @@ export default function Dashboard() {
      ))}
     </div>
     <Alerts setShowSlider={setShowSlider} tripStages={tripStages}/>
-    {showSlider && <TakeActions setShowSlider={setShowSlider} />}
+    {showSlider && <TakeActions setShowSlider={setShowSlider} trips={trips} tripStages={tripStages}/>}
     <div className='pt-5 pb-4'>
      <TripsTable stages={stages} trips={trips} tripStages={tripStages} />
     </div>
