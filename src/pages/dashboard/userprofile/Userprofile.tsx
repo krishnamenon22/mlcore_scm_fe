@@ -6,8 +6,8 @@ import CardProfile from "components/Card/CardProfile";
 import { AxiosResponse } from 'axios';
 import { useAppSelector, useAppDispatch } from 'hooks/store-hooks'
 import client from 'client';
-import { ENDPOINTS, USERDETAILS } from 'constants/constant';
-import { CardsAPIResponseType, CardObject, CardProfileObject } from './types';
+import { ENDPOINTS } from 'constants/constant';
+import { CardsAPIResponseType, CardObject, CardProfileObject, UserProfileAPIResponseType } from './types';
 
 
 export default function Userprofile() {
@@ -19,9 +19,14 @@ export default function Userprofile() {
         setCards(response.data.data)
     };
 
+    const userProfileData = async () => {
+        const response: AxiosResponse<UserProfileAPIResponseType> = await client.get(`${ENDPOINTS.userProfile}`);
+        setCardProfile(response.data.data)
+    };
+
     useEffect(() => {
         fetchInboundCards();
-        setCardProfile(USERDETAILS)
+        userProfileData();
     }, []);
 
     return (
@@ -30,7 +35,7 @@ export default function Userprofile() {
                 <p className='text-xl pb-3'>
                     Overview
                 </p>
-                <div className="min-h-[20vh] flex justify-between">
+                <div className="min-h-[20vh] flex ">
                     <div className="min-w-[12vw] "> <CardProfileImage username={cardProfile[0]?.username} />  </div>
                     <div className="mx-4 "> <CardProfile key={cardProfile[0]?.userid} username={cardProfile[0]?.username} userid={cardProfile[0]?.userid} gender={cardProfile[0]?.gender} dob={cardProfile[0]?.dob} location={cardProfile[0]?.location} language={cardProfile[0]?.language} phone={cardProfile[0]?.phone} email={cardProfile[0]?.email} />  </div>
                 </div>

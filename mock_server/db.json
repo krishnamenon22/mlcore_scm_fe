@@ -789,5 +789,34 @@
         ]
       }
     ]
+  },
+  "userprofile_data": {
+    "data": [
+      {
+        "username": "John Mathew",
+        "userid": 9382992,
+        "gender": "male",
+        "dob": "07/22/1989",
+        "location": "California,US",
+        "language": "English",
+        "phone": "232 908 1234",
+        "email": "johnmathew@tigeranalytics.com"
+      }
+    ],
+    "status": "OK",
+    "http_code": 200
+  },
+  "notification_data": {
+    "data": [
+      {
+        "critical": 6,
+        "tripid": 19892244,
+        "source": "PL FRANKFORT EAST IN",
+        "trailerid": 32302,
+        "sourceid": 232
+      }
+    ],
+    "status": "OK",
+    "http_code": 200
   }
 }
